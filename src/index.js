@@ -2,8 +2,17 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temperature");
   let temperature = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#current-city");
+  let description = document.querySelector("#weather-discription");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#current-temperature-icon");
+
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = temperature;
+  description.innerHTML = response.data.condition.description;
+  humidity.innerHTML = response.data.temperature.humidity;
+  wind.innerHTML = response.data.wind.speed;
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.icon}">`;
 }
 
 function search(event) {
