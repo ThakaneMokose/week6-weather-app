@@ -13,6 +13,11 @@ function displayTemperature(response) {
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = response.data.wind.speed;
   icon.innerHTML = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.icon}">`;
+
+  let currentDateELement = document.querySelector("#current-date");
+  let currentDate = new Date(response.data.time * 1000);
+
+  currentDateELement.innerHTML = formatDate(currentDate);
 }
 
 function search(event) {
@@ -56,7 +61,4 @@ function formatDate(date) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateELement = document.querySelector("#current-date");
-let currentDate = new Date();
 
-currentDateELement.innerHTML = formatDate(currentDate);
